@@ -1,0 +1,160 @@
+
+@import url("https://fonts.googleapis.com/css?family=Lato:400,500,600,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+.parent {
+  display: grid;
+}
+.speed-settings {
+  width: 360px;
+  font-weight: bold;
+  justify-content: center;
+  margin: auto auto;
+  background: #fff;
+}
+.wrapper {
+  display: flex;
+  background: #fff;
+  height: 100px;
+  width: 360px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 20px 15px;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+  margin: auto;
+}
+.wrapper1 {
+  background: #fff;
+  height: 300px;
+  width: 300px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5000px;
+  padding: 20px 15px;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+  margin: auto;
+}
+.hh{
+   background-color: #d9d9d9;
+   height: 27%;
+   width: 27%;
+   border-radius: 50%;
+   font-size: 24px;
+   border: 1px ;
+   margin-left:30px;
+   margin-right:30px;
+
+  cursor: not-allowed;
+}
+.hh:hover {background-color: #0069d9}
+
+
+
+.wrapper .option {
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 10px;
+  border: 2px solid lightgrey;
+  transition: all 0.3s ease;
+}
+.wrapper .option .dot {
+  height: 20px;
+  width: 20px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  position: relative;
+}
+.wrapper .option .dot::before {
+  position: absolute;
+  content: "";
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background: #0069d9;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
+}
+input[type="radio"] {
+  display: none;
+}
+#option-1:checked:checked ~ .option-1,
+#option-2:checked:checked ~ .option-2,
+#option-3:checked:checked ~ .option-3,
+#option-4:checked:checked ~ .option-4,
+#option-5:checked:checked ~ .option-5 {
+  border-color: #0069d9;
+  background: #0069d9;
+}
+#option-1:checked:checked ~ .option-1 .dot,
+#option-2:checked:checked ~ .option-2 .dot,
+#option-3:checked:checked ~ .option-3 .dot,
+#option-4:checked:checked ~ .option-4 .dot,
+#option-5:checked:checked ~ .option-5 .dot {
+  background: #fff;
+}
+#option-1:checked:checked ~ .option-1 .dot::before,
+#option-2:checked:checked ~ .option-2 .dot::before,
+#option-3:checked:checked ~ .option-3 .dot::before,
+#option-4:checked:checked ~ .option-4 .dot::before,
+#option-5:checked:checked ~ .option-5 .dot::before {
+  opacity: 1;
+  transform: scale(1);
+}
+.wrapper .option span {
+  font-size: 20px;
+  color: #808080;
+}
+#option-1:checked:checked ~ .option-1 span,
+#option-2:checked:checked ~ .option-2 span,
+#option-3:checked:checked ~ .option-3 span,
+#option-4:checked:checked ~ .option-4 span,
+#option-5:checked:checked ~ .option-5 span {
+  color: #fff;
+}
+
+/**********************
+D-PAD/O-PAD css
+**********************/
+
+
+
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+

@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    New Goal
+{% endblock %}
+
+{% block main %}
+
+    <form action="/new" method="post">
+
+        <div class="parent">
+            <div class="speed-settings">mode Settings</div>
+            <div class="wrapper">
+              <input type="radio" name="mode-settings" id="option-1" value="start">
+              <input type="radio" name="mode-settings" id="option-2" value="stop">
+
+              <label for="option-1" class="option option-1">
+                <div class="dot"></div>
+                <span>Start</span>
+              </label>
+              <label for="option-2" class="option option-2">
+                <div class="dot"></div>
+                <span>Stop</span>
+              </label>
+
+            </div ><p></p>
+            <dive class="wrapper1" ><p></p>
+              <button value = "up" id = "move" name ="move" class=" hh"  >up</button><p></p>
+              <button value = "left" id = "move" name ="move" class="  hh " >left</button>
+              <button value = "right" id = "move" name ="move" class=" hh " >right</button><p></p>
+              <button value = "down" id = "move" name ="move" class=" hh" >down</button><br></br></dive><p></p>
+
+            <div class="speed-settings">Speed Settings</div>
+            <div class="wrapper">
+              <input type="radio" name="speed-settings" id="option-3" value="slow">
+              <input type="radio" name="speed-settings" id="option-4" value="normal">
+              <input type="radio" name="speed-settings" id="option-5" value="fast">
+              <label for="option-3" class="option option-3">
+                <div class="dot"></div>
+                <span>Slow</span>
+              </label>
+              <label for="option-4" class="option option-4">
+                <div class="dot"></div>
+                <span>Normal</span>
+              </label>
+              <label for="option-5" class="option option-5">
+                <div class="dot"></div>
+                <span>Fast</span>
+              </label>
+            </div>
+
+
+
+          </div>
+    </form>
+{% endblock %}
