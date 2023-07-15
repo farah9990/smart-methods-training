@@ -3,21 +3,21 @@
 
 The code can be run using flask. After running it, you can enter the link, It will take you to the login page. If you do not
 already have an account, you can create an account from the icon above Once you log in, you will see your own page, where you
-will see a table listing your goals, their details, status, and the time they were set or the time they were completed,
-depending on the situation. If you are new, the table will appear empty, create your goals!! How ? There are icons at the top
-on the left side, which include creating a new goal or specifying a goal that it has finished, and an icon to show you the
-schedule of your actual goals. It may take you back to the home page. Also at the top of the page on the right side there is an icon to log out!
+will see a table listing your moving, their move,  and the time they were set or the time they were completed,
+depending on the situation. If you are new, the table will appear empty, Try it!! How ? There are icons at the top
+on the left side, which include icon move  and an icon to show you the
+schedule of your actual moving. It may take you back to the home page. Also at the top of the page on the right side there is an icon to log out!
 
-New icon: To record newmove,
+move icon: To record new move,
 
 
-historu icon: to show all your moving
+history icon: to show all your moving
 
 app.py :Open up app.py. Atop the file are a bunch of imports, among them CS50’s SQL module and a few helper functions. More on those soon.
 
 After configuring Flask, notice how this file disables caching of responses (provided you’re in debugging mode, which you are by default in your code50 codespace), lest you make a change to some file but your browser not notice. Notice next how it configures Jinja with a custom “filter,” usd, a function (defined in helpers.py) that will make it easier to format values as US dollars (USD). It then further configures Flask to store sessions on the local filesystem (i.e., disk) as opposed to storing them inside of (digitally signed) cookies, which is Flask’s default. The file then configures CS50’s SQL module to use project.db.
 
-Thereafter are a whole bunch of routes, only two of which are fully implemented: login and logout. Read through the implementation of login first. Notice how it uses db.execute (from CS50’s library) to query finance.db. And notice how it uses check_password_hash to compare hashes of users’ passwords. Also notice how login “remembers” that a user is logged in by storing his or her user_id, an INTEGER, in session. That way, any of this file’s routes can check which user, if any, is logged in. Finally, notice how once the user has successfully logged in, login will redirect to "/", taking the user to their home page. Meanwhile, notice how logout simply clears session, effectively logging a user out.
+Thereafter are a whole bunch of routes, two of which are : login and logout. Read through the implementation of login first. Notice how it uses db.execute (from CS50's library) to query projact.db. And notice how it uses check_password_hash to compare hashes of users' passwords. Also notice how login “remembers” that a user is logged in by storing his or her user_id, an INTEGER, in session. That way, any of this file's routes can check which user, if any, is logged in. Finally, notice how once the user has successfully logged in, login will redirect to "/", taking the user to their home page. Meanwhile, notice how logout simply clears session, effectively logging a user out.
 
 Notice how most routes are “decorated” with @login_required (a function defined in helpers.py too). That decorator ensures that, if a user tries to visit any of those routes, he or she will first be redirected to login so as to log in.
 
@@ -41,4 +41,4 @@ index.html Where this page contains the table in which your goals will be listed
 requirements.txt : Next take a quick look at requirements.txt. That file simply prescribes the packages on which this app will depend.
 
 
-I hope you enjoy recording your own moving robot
+I hope you enjoy moving your own robot
