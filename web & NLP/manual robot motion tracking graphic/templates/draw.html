@@ -1,0 +1,379 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    draw
+{% endblock %}
+
+{% block main %}
+<head>
+    <title>MAP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      const Http = new XMLHttpRequest();
+      Http.open("GET","https://s-m.com.sa/test/d.php");
+      Http.send();
+    </script>
+    <script>
+    function resize() {
+
+      var canvas = document.getElementById('myCanvas');
+      var canvasRatio = canvas.height / canvas.width;
+      var windowRatio = window.innerHeight / window.innerWidth;
+      var width;
+      var height;
+
+      if (windowRatio < canvasRatio) {
+          height = window.innerHeight;
+          width = height / canvasRatio;
+      } else {
+          width = window.innerWidth;
+          height = width * canvasRatio;
+      }
+
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+  };
+
+  window.addEventListener('resize', resize, false);
+    </script>
+  </head>
+  <style>
+  body {
+      background-color: #e6e7e9;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .main {
+    padding: 20px 0; }
+
+  .signup {
+    margin-bottom: 150px; }
+
+  .signup-content {
+    padding: 20px 0; }
+
+  .container {
+    width: 600px;
+    background: #e6e7e9;
+    margin: 0 auto;
+    border:2px solid #aaabad;
+    border-radius: 30px;
+    }
+
+  .col {
+      width: 50%;
+      float: left;
+      box-sizing: border-box;
+  }
+
+  display-flex, .display-flex, .display-flex-center, .signup-content, .signin-content, .social-login, .socials {
+    display: flex;
+    display: -webkit-flex; }
+
+
+  @media screen and (max-width: 768px) {
+    .signup-content {
+      flex-direction: column;
+      -moz-flex-direction: column;
+      -webkit-flex-direction: column;
+      -o-flex-direction: column;
+      -ms-flex-direction: column;
+      justify-content: center;
+      -moz-justify-content: center;
+      -webkit-justify-content: center;
+      -o-justify-content: center;
+      -ms-justify-content: center; }
+  }
+  @media screen and (max-width: 1200px) {
+    .container {
+      width: calc( 100% - 30px);
+      max-width: 100%; }
+     canvas {
+      width: calc( 100% - 30px);
+      max-width: 100%;
+     }
+      }
+  @media screen and (min-width: 1024px) {
+    .container {
+      max-width: 1200px; }
+     canvas {
+      max-width: 1200px;
+     }
+      }
+
+
+
+  .button {
+    display: inline-block;
+    border-radius: 4px;
+    background: rgb(71,71,70);
+    background: linear-gradient(0deg, rgba(71,71,70,1) 0%, rgba(220,221,222,1) 100%);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 14px;
+    padding: 5px;
+    width: 65px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 2px;
+  }
+
+  .buttonc {
+    display: inline-block;
+    border-radius: 50%;
+  background: rgb(234,235,236);
+  background: radial-gradient(circle, rgba(234,235,236,1) 0%, rgba(171,175,171,1) 100%);  border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 14px;
+    padding: 5px;
+    width: 40px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 2px;
+  }
+
+
+  canvas{
+      background-color: #dcddde;
+  }
+
+  input[type=text] {
+    width: 50%;
+    height: 15%;
+    padding: 10px 10px;
+    box-sizing: border-box;
+  }
+
+  area {
+   outline-color: transparent;
+    }
+  </style>
+  <body>
+  <p align="center">
+  <div class="main">
+
+  <div class="container">
+  <div class="signup-content">
+  <div class="center-block" style="text-align:center;word-break:break-all;">
+      <img src="https://s-m.com.sa/smtc/test/hbvfd/bbb.png" usemap="#w" width="180" height="175">
+      <map name="w">
+          <area id="area" shape="rect" coords="76,30,105,64"  href="#" onclick="Forward();" >
+          <area id="area" shape="rect" coords="36,73,68,102"  href="#" onclick="Left();" >
+          <area id="area" shape="rect" coords="115,73,145,100"  href="#" onclick="Right();" >
+          <area id="area" shape="rect" coords="76,115,105,145"  href="#" onclick="Backward();" >
+      </map>	<br>&nbsp;
+      <button type="submit" class="button" onclick="Delete()" style="vertical-align:middle">Delete</button><br>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  <p align="center">
+  <canvas id="myCanvas" width="600" height="400" style="border:2px solid #aaabad; border-radius: 30px;">
+  Your browser does not support the HTML canvas tag.</canvas>
+  </p>
+
+  <script>
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  ctx.lineWidth = "5";
+  ctx.strokeStyle = "black"; // Gray path
+  var right=false;
+  var left=false;
+  var basex=300;
+  var basey=200;
+  var lastx=300;
+  var lasty=200;
+  var x;
+  var cright = 0;
+  var cleft = 0;
+  var fragain =0;
+  var flagain =0;
+
+  function Forward(){
+  ctx.moveTo(lastx,lasty);
+  //console.log("sy"+lasty+"sx"+lastx);
+  basex=lastx;
+  basey=lasty;
+  //console.log("basey"+lasty+"basex"+lastx);
+  var cc = 1 * 10;
+  var y= cc;
+  y=parseInt(y);
+  lasty-=y;
+  ctx.lineTo(lastx,lasty);
+  ctx.stroke();
+
+  if (fragain == 0 && flagain == 0){
+          const Http = new XMLHttpRequest();
+          Http.open("GET","https://s-m.com.sa/test/enter.php?forward="+"f");
+          Http.send();
+          console.log("f");
+  }else if ( fragain >= 1 ){
+          const Http = new XMLHttpRequest();
+          Http.open("GET","https://s-m.com.sa/test/enter.php?right="+"r");
+          Http.send();
+          console.log("r");
+  }else if ( flagain >= 1 ){
+          const Http = new XMLHttpRequest();
+          Http.open("GET","https://s-m.com.sa/test/enter.php?left="+"l");
+          Http.send();
+          console.log("l");
+  }
+  fragain = 0;
+  flagain = 0;
+  cright = 0;
+  cleft =0;
+  startBackward = startBackward +1;
+  }
+
+
+  var bfright =0;
+  var bfleft =0;
+  var startBackward =0;
+  var startBackwardright =0;
+  var startBackwardleft =0;
+  function Backward(){
+  ctx.moveTo(lastx,lasty);
+  //console.log("sy"+lasty+"sx"+lastx);
+  basex=lastx;
+  basey=lasty;
+  //console.log("basey"+lasty+"basex"+lastx);
+  var cc = 1 * 10;
+  var y= cc;
+  y=parseInt(y);
+  lasty+=y;
+  ctx.lineTo(lastx,lasty);
+  ctx.stroke();
+  if (startBackward == 0 ){
+      console.log("b");
+  }else if (fragain == 0 && flagain == 0 ){
+          const Http = new XMLHttpRequest();
+          Http.open("GET","https://s-m.com.sa/test/enter.php?forward="+"f");
+          Http.send();
+          console.log("f");
+  }else if ( fragain >= 1 ){
+          const Http = new XMLHttpRequest();
+          Http.open("GET","https://s-m.com.sa/test/enter.php?left="+"l");
+          Http.send();
+          console.log("l");
+  }else if ( flagain >= 1 ){
+          const Http = new XMLHttpRequest();
+          Http.open("GET","https://s-m.com.sa/test/enter.php?right="+"r");
+          Http.send();
+          console.log("r");
+  }
+  fragain = 0;
+  flagain = 0;
+  cright = 0;
+  cleft =0;
+  bfright = bfright + 1;
+  bfleft = bfleft + 1;
+  }
+
+  function Right(){
+      basex=lastx;
+      basey=lasty;
+      //console.log("basey"+lasty+"basex"+lastx)
+      //console.log("ly"+lasty+"lx"+lastx);
+      var c = 1 * 10;
+      var x= c;
+      x=parseInt(x);
+      lastx+=x;
+      ctx.lineTo(lastx,lasty);
+      ctx.stroke();
+      //console.log("ly"+lasty+"lx"+lastx);
+      cright=cright+1;
+      if ( (cright == 1 && bfright == 0) || (startBackward == 0 && startBackwardright == 0)){
+          const Http = new XMLHttpRequest();
+          Http.open("GET","https://s-m.com.sa/test/enter.php?right="+"r");
+          Http.send();
+          console.log("r");
+      }else if(cright >= 1 && bfright == 0){
+          const Http = new XMLHttpRequest();
+          Http.open("GET","https://s-m.com.sa/test/enter.php?forward="+"f");
+          Http.send();
+          console.log("f");
+      }else if ( bfright == 0 ){
+          const Http = new XMLHttpRequest();
+          Http.open("GET","https://s-m.com.sa/test/enter.php?forward="+"f");
+          Http.send();
+          console.log("f");
+      }else if ( bfright >= 1){
+          const Http = new XMLHttpRequest();
+          Http.open("GET","https://s-m.com.sa/test/enter.php?left="+"l");
+          Http.send();
+          console.log("l");
+      }
+      bfright = 0;
+      flagain=flagain+1;
+      startBackwardright = startBackwardright +1;
+      startBackward = startBackward +1;
+
+  }
+
+
+  function Left(){
+      basex=lastx;
+      basey=lasty;
+      //console.log("basey"+lasty+"basex"+lastx)
+      var c = 1 * 10;
+      var x= c;
+      x=parseInt(x);
+      lastx-=x;
+      ctx.lineTo(lastx,lasty);
+      ctx.stroke();
+      //console.log("ly"+lasty+"lx"+lastx);
+      cleft=cleft+1;
+      if ( cleft == 1 && bfleft == 0 || (startBackward == 0 && startBackwardleft == 0)){
+          const Http = new XMLHttpRequest();
+          Http.open("GET","https://s-m.com.sa/test/enter.php?left="+"l");
+          Http.send();
+          console.log("l");
+      }else if ( cleft >= 1 && bfleft == 0){
+          const Http = new XMLHttpRequest();
+          Http.open("GET","https://s-m.com.sa/test/enter.php?forward="+"f");
+          Http.send();
+          console.log("f");
+      }else if ( bfleft == 0 ){
+          const Http = new XMLHttpRequest();
+          Http.open("GET","https://s-m.com.sa/test/enter.php?forward="+"f");
+          Http.send();
+          console.log("f");
+      }else if ( bfleft >= 1){
+          const Http = new XMLHttpRequest();
+          Http.open("GET","https://s-m.com.sa/test/enter.php?right="+"r");
+          Http.send();
+          console.log("r");
+      }
+      fragain=fragain+1;
+      bfleft=0;
+      startBackwardleft = startBackwardleft +1;
+      startBackward = startBackward +1;
+  }
+
+
+
+  function Delete(){
+    ctx.clearRect(0, 0, c.width, c.height);
+    window.location.reload();
+
+   const Http = new XMLHttpRequest();
+   Http.open("GET","https://s-m.com.sa/test/d.php");
+   Http.send();
+  }
+
+
+  </script>
+
+
+  </body>
+
+{% endblock %}

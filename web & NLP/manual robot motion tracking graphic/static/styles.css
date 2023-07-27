@@ -1,0 +1,136 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+body {
+    background-color: #e6e7e9;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.main {
+  padding: 20px 0; }
+
+.signup {
+  margin-bottom: 150px; }
+
+.signup-content {
+  padding: 20px 0; }
+
+.container {
+  width: 600px;
+  background: #e6e7e9;
+  margin: 0 auto;
+  border:2px solid #aaabad;
+  border-radius: 30px;
+  }
+
+.col {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+}
+
+display-flex, .display-flex, .display-flex-center, .signup-content, .signin-content, .social-login, .socials {
+  display: flex;
+  display: -webkit-flex; }
+
+
+@media screen and (max-width: 768px) {
+  .signup-content {
+    flex-direction: column;
+    -moz-flex-direction: column;
+    -webkit-flex-direction: column;
+    -o-flex-direction: column;
+    -ms-flex-direction: column;
+    justify-content: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    -o-justify-content: center;
+    -ms-justify-content: center; }
+}
+@media screen and (max-width: 1200px) {
+  .container {
+    width: calc( 100% - 30px);
+    max-width: 100%; }
+   canvas {
+    width: calc( 100% - 30px);
+    max-width: 100%;
+   }
+	}
+@media screen and (min-width: 1024px) {
+  .container {
+    max-width: 1200px; }
+   canvas {
+    max-width: 1200px;
+   }
+	}
+
+
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background: rgb(71,71,70);
+  background: linear-gradient(0deg, rgba(71,71,70,1) 0%, rgba(220,221,222,1) 100%);
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 14px;
+  padding: 5px;
+  width: 65px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.buttonc {
+  display: inline-block;
+  border-radius: 50%;
+background: rgb(234,235,236);
+background: radial-gradient(circle, rgba(234,235,236,1) 0%, rgba(171,175,171,1) 100%);  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 14px;
+  padding: 5px;
+  width: 40px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 2px;
+}
+
+
+canvas{
+	background-color: #dcddde;
+}
+
+input[type=text] {
+  width: 50%;
+  height: 15%;
+  padding: 10px 10px;
+  box-sizing: border-box;
+}
+
+area {
+ outline-color: transparent;
+  }

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    MOVE
+{% endblock %}
+
+{% block main %}
+    <h1>MOVE</h1>
+
+
+    <form action="/new" method="post">
+
+        <div class="mb-3">
+            <label>right</label>
+            <input id="right" autocomplete="off" autofocus class="form-control mx-auto w-auto" id="goal" name="right" placeholder="put in foot" type="text" >
+        </div>
+        <div class="mb-3">
+            <label>forward</label>
+            <input id="forward" autocomplete="off" autofocus class="form-control mx-auto w-auto" id="forward" name="forward" placeholder="put in foot" type="text">
+        </div>
+        <div class="mb-3">
+            <label>left</label>
+            <input id="left" autocomplete="off" autofocus class="form-control mx-auto w-auto" id="left" name="left" placeholder="put in foot" type="text">
+        </div>
+        <button name="action" value="save" class="btn btn-primary"  type="submit">save</button>
+        <button id="start"name="action" value="start" class="btn btn-primary" type="submit">draw</button>
+        <button name="action" value="delete" class="btn btn-primary" type="submit">delete</button>
+
+
+
+    </form>
+{% endblock %}
