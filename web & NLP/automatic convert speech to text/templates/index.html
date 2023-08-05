@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    history
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">words</th>
+        <th scope="col">time</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for row in database %}
+            <tr>
+                <td>{{row["words"]}}</td>
+                <td>{{ row["time"]}}</td>
+
+           </tr>
+
+            {%endfor%}
+
+
+
+
+
+    </tbody>
+
+  </table>
+
+{% endblock %}

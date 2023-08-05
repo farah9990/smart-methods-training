@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Speech
+{% endblock %}
+
+{% block main %}
+    <h1>try</h1>
+    <!DOCTYPE html>
+    <html>
+    <head>
+
+        <meta charset="UTF-8">
+
+
+    </head>
+
+    <body>
+
+
+
+    <p id="demo" style="display:none;"></p>
+
+    <script>
+
+const input = document.querySelector('output')
+
+const recognition = new webkitSpeechRecognition();
+
+// Set the properties
+ // Language for speech recognition
+recognition.continuous = true; // Continuous listening
+
+// Event listener for speech recognition start
+recognition.onstart = function() {
+  console.log("Listening for wake word...");
+};
+
+// Event listener for speech recognition end
+recognition.onend = function() {
+  console.log("Speech recognition stopped.");
+  // Restart listening after it ends
+  recognition.start();
+};
+
+// Event listener for speech recognition result
+recognition.onresult = function(event) {
+  var text = event.results[event.results.length - 1][0].transcript;
+  console.log("Recognized: " + text);
+  output.value = text ;
+
+  if (text.toLowerCase().includes("hey assistant")) {
+    console.log("Wake word detected!");
+    // Continue with speech to text conversion or other actions
+  } else {
+    console.log("Wake word not detected.");
+  }
+};
+
+       recognition.start();
+
+
+    </script>
+    <div align="center">
+    <br>
+
+
+
+        <p><span id="action"></span></p>
+
+
+    </div>
+    </body>
+    </html>
+    <form action="/new" method="post">
+        <input name="output" id="output" type="text">
+        <button class="btn btn-primary" role="button" name="save" >save</button>
+    </form>
+{% endblock %}
