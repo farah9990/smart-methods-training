@@ -1,2 +1,4 @@
-# smart-methods-training
-****
+# smart-methods-training #
+#### summer training  
+### includes :
+
